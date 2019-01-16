@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: [{itemName: 'Eat'}, {itemName: 'Sleep'}, {itemName: 'Repeat'}],
+      todoList: [{itemName: 'Eat', id: 1}, {itemName: 'Sleep', id: 2}, {itemName: 'Repeat', id: 3}],
       todoItem: ''
     };
   }
