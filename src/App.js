@@ -9,12 +9,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: [{itemName: 'Eat', id: 1}, {itemName: 'Sleep', id: 2}, {itemName: 'Repeat', id: 3}],
+      todoList: [{itemName: 'Eat', id: 1}], //placeholder item is initially included in state to test if the components are working
       todoItem: ''
     };
   }
 
-  submitTodo = () => alert('submit clicked');
+  inputChangeHandler = e => {
+    this.setState({ todoItem: e.target.value }); //capture user input from the TodoForm component's <input> element
+  }
+
+  submitTodo = e => {
+    e.preventDefault(); //prevents default event behavior (button click)
+    let tempTodos = this.state.todoList; //store the current state's todoList array
+    tempTodos.push({itemName: this.state.todoItem, id: Date.now()}); //push the new todo item onto tempTodos array
+    this.setState({todoList: tempTodos, todoItem: ''}); //update state
+  };
 
   clearTodo = () => alert('clear clicked');
 
@@ -22,7 +31,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Ro's Todo App</h1>
-        <TodoForm submitBtnClick={this.submitTodo} clearBtnClick={this.clearTodo}/>
+        <TodoForm value={this.state.todoItem} submitBtnClick={this.submitTodo} clearBtnClick={this.clearTodo} inputChange={this.inputChangeHandler}/>
         <TodoList currentList={this.state.todoList}/>
       </div>
     );
