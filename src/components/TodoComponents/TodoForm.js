@@ -2,9 +2,11 @@ import React from 'react';
 
 const TodoForm = props => {
     return (
-        <div className="todo-form">
+        <form className="todo-form">
             <input type="text" placeholder="What do you need to do?"></input>
-        </div>
+            <button className="submit-btn" onClick={props.submitBtnClick}>Submit</button>
+            <button className="clear-btn" onClick={props.clearBtnClick}>Clear List</button>
+        </form>
     );
 }
 

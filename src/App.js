@@ -8,14 +8,20 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: []
+      todoList: [],
+      todoItem: ''
     };
   }
+
+  submitTodo = () => alert('submit clicked');
+
+  clearTodo = () => alert('clear clicked');
+
   render() {
     return (
       <div className="App">
         <h1>Ro's Todo App</h1>
-        <TodoForm currentList={this.state.todoList}/>
+        <TodoForm currentList={this.state.todoList} submitBtnClick={this.submitTodo} clearBtnClick={this.clearTodo}/>
       </div>
     );
   }
