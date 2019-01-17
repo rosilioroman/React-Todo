@@ -20,9 +20,9 @@ class App extends React.Component {
 
   submitTodo = e => {
     e.preventDefault(); //prevents default event behavior (button click)
-    let tempTodos = this.state.todoList; //store the current state's todoList array
-    tempTodos.push({itemName: this.state.todoItem, id: Date.now()}); //push the new todo item onto tempTodos array
-    this.setState({todoList: tempTodos, todoItem: ''}); //update state
+    let tempTodos = this.state.todoList; //tempTodos stores the current state's todoList array
+    tempTodos.push({itemName: this.state.todoItem, id: Date.now()}); //create the new todo item and push it onto the tempTodos array
+    this.setState({todoList: tempTodos, todoItem: ''}); //set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
   };
 
   clearTodo = () => alert('clear clicked');
