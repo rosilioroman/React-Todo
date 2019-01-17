@@ -9,19 +9,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: [{itemName: 'Eat', id: 1}], //placeholder item is initially included in state to test if the components are working
+      todoList: [{itemName: 'Eat', completed: false, id: 1}], //placeholder object is initially included in state to test if the components are working
       todoItem: ''
     };
   }
 
+  // A method that captures user input.
+  // Implemented in the TodoForm component's <input> element.
   inputChangeHandler = e => {
-    this.setState({ todoItem: e.target.value }); //capture user input from the TodoForm component's <input> element
+    this.setState({ todoItem: e.target.value });
   }
 
   submitTodo = e => {
     e.preventDefault(); //prevents default event behavior (button click)
     let tempTodos = this.state.todoList; //tempTodos stores the current state's todoList array
-    tempTodos.push({itemName: this.state.todoItem, id: Date.now()}); //create the new todo item and push it onto the tempTodos array
+    tempTodos.push({itemName: this.state.todoItem, completed: false, id: Date.now()}); //create the new todo item and push it onto the tempTodos array
     this.setState({todoList: tempTodos, todoItem: ''}); //set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
   };
 
