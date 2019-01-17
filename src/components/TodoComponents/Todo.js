@@ -1,4 +1,5 @@
 import React from 'react';
+import './Todo.css';
 
 // TodoItem is a functional component that receives an object from the todoList array found in the app's state
 // It returns a div element with a child element containing the itemName of the object passed down by TodoList

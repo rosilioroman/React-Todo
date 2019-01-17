@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import './App.css';
 
 class App extends React.Component {
   // `App` is designed to be the parent component of the application.

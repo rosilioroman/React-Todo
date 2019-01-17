@@ -1,4 +1,5 @@
 import React from 'react';
+import './Todo.css';
 
 //TodoForm is a functional component that holds all user input. 
 const TodoForm = props => {
