@@ -20,12 +20,33 @@ class App extends React.Component {
     this.setState({ todoItem: e.target.value });
   }
 
+  //prevents default event behavior (button click)
+  //tempTodos stores the current state's todoList array
+  //create the new todo item and push it onto the tempTodos array
+  //set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
   submitTodo = e => {
-    e.preventDefault(); //prevents default event behavior (button click)
-    let tempTodos = this.state.todoList; //tempTodos stores the current state's todoList array
-    tempTodos.push({itemName: this.state.todoItem, completed: false, id: Date.now()}); //create the new todo item and push it onto the tempTodos array
-    this.setState({todoList: tempTodos, todoItem: ''}); //set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
+    e.preventDefault(); 
+    let tempTodos = this.state.todoList; 
+    tempTodos.push({itemName: this.state.todoItem, completed: false, id: Date.now()}); 
+    this.setState({todoList: tempTodos, todoItem: ''});
   };
+
+  // completedStatusHandler is a method that changes the completed property of an object in this.state.todoList
+  // It accomplishes this by mapping over the array and finding the object with a matching id to the one that was clicked.
+  // if the object has a matching id, change the completed property to be the opposite of its current value.
+  // Finally, update state with the new array containing the change.
+  completedStatusHandler = id => {
+    let tempTodos = this.state.todoList;
+    tempTodos = tempTodos.map(todoObj => {
+      if(todoObj.id === id) {
+        todoObj.completed = !todoObj.completed;
+        return todoObj;
+      } else {
+        return todoObj; //don't make changes if the id does not match
+      }
+    });
+    this.setState({ todoList: tempTodos });
+  }
 
   clearTodo = () => alert('clear clicked');
 
@@ -33,8 +54,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Ro's Todo App</h1>
-        <TodoForm value={this.state.todoItem} submitBtnClick={this.submitTodo} clearBtnClick={this.clearTodo} inputChange={this.inputChangeHandler}/>
-        <TodoList currentList={this.state.todoList}/>
+        <TodoForm 
+          value={this.state.todoItem} 
+          submitBtnClick={this.submitTodo} 
+          clearBtnClick={this.clearTodo} 
+          inputChange={this.inputChangeHandler}
+        />
+        <TodoList 
+          currentList={this.state.todoList} 
+          completedHandler={this.completedStatusHandler}
+        />
       </div>
     );
   }
