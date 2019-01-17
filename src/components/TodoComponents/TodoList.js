@@ -7,11 +7,9 @@ import './Todo.css';
 // It iterates through the todoList array found in the state object and creates a <TodoItem /> instance for every item in the todoList array. 
 const TodoList = props => {
     return (
-        <ul>
-            props.currentList.map(todoObj => {
-                <TodoItem key={todoObj.id} todoItem={todoObj} completedHandler={props.completedHandler}/>
-            })
-        </ul>
+        props.currentList.map(todoObj => {
+            return <TodoItem key={todoObj.id} todoItem={todoObj} completedHandler={props.completedHandler}/>
+        })
     );
 }
 
