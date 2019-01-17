@@ -47,7 +47,17 @@ class App extends React.Component {
     this.setState({ todoList: tempTodos });
   }
 
-  clearTodo = () => alert('clear clicked');
+  // clearTodo is a method that removes all completed items from the list
+  // The 'Clear Completed Items' (found in TodoForm.js) button must be clicked by the user
+  // It accomplishes this by using Array.filter() to remove objects with a completed value set to 'true' 
+  clearTodo = e => {
+    e.preventDefault();
+    let tempTodos = this.state.todoList;
+    tempTodos = tempTodos.filter(todoItem => {
+      return todoItem.completed === false;
+    });
+    this.setState({ todoList: tempTodos });
+  }
 
   render() {
     return (
