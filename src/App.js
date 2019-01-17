@@ -3,9 +3,8 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+  // `App` is designed to be the parent component of the application.
+  // this component is going to take care of state, and any change handlers needed to work with state
   constructor() {
     super();
     this.state = {
@@ -20,10 +19,10 @@ class App extends React.Component {
     this.setState({ todoItem: e.target.value });
   }
 
-  //prevents default event behavior (button click)
-  //tempTodos stores the current state's todoList array
-  //create the new todo item and push it onto the tempTodos array
-  //set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
+  // submitTodo is a method that adds a new todo item to the list
+  // Create a variable tempTodos to store the current state's todoList array
+  // Create the new todo item and push it onto tempTodos
+  // Set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
   submitTodo = e => {
     e.preventDefault(); 
     let tempTodos = this.state.todoList; 
