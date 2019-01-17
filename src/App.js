@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: [{itemName: 'Eat', completed: false, id: 1}], //placeholder object is initially included in state to test if the components are working
+      todoList: [{itemName: 'Click me to mark as completed!', completed: false, id: 1}], //placeholder object is initially included in state to test if the components are working
       todoItem: ''
     };
   }

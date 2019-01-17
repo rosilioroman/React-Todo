@@ -8,7 +8,7 @@ import './Todo.css';
 const TodoItem = props => {
     return (
         <div className="todo-list-item" onClick={() => props.completedHandler(props.todoItem.id)} style={props.todoItem.completed ? {textDecoration: 'line-through'} : null}> 
-            {props.todoItem.itemName}
+            <li>{props.todoItem.itemName}</li>
         </div>
     );
 }
