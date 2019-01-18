@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
 import './App.css';
 
 class App extends React.Component {
@@ -10,14 +12,15 @@ class App extends React.Component {
     super();
     this.state = {
       todoList: [{itemName: 'Click me to mark as completed!', completed: false, id: 1}], //placeholder object is initially included in state to test if the components are working
-      todoItem: ''
+      todoItem: '',
+      searchText: ''
     };
   }
 
   // A method that captures user input.
   // Implemented in the TodoForm component's <input> element.
   inputChangeHandler = e => {
-    this.setState({ todoItem: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   // submitTodo is a method that adds a new todo item to the list
@@ -70,6 +73,7 @@ class App extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div className="App">
@@ -81,10 +85,15 @@ class App extends React.Component {
           clearAllBtnClick={this.clearAllItemsHandler}
           inputChange={this.inputChangeHandler}
         />
+        <SearchBar 
+          searchInput={this.inputChangeHandler} 
+          searchText={this.state.searchText}
+        />
         <TodoList 
           currentList={this.state.todoList} 
           completedHandler={this.completedStatusHandler}
         />
+        <Footer />
       </div>
     );
   }
