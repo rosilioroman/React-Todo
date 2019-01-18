@@ -46,3 +46,12 @@
     color: whitesmoke;
     cursor: pointer;
 }
+
+.clear-all-container {
+    display: flex;
+    justify-content: center;
+}
+
+.clear-all-btn {
+    color: red;
+}

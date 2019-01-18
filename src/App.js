@@ -62,6 +62,14 @@ class App extends React.Component {
     this.setState({ todoList: tempTodos });
   }
 
+  // Method that clears all items on the todo list
+  clearAllItemsHandler = e => {
+    e.preventDefault();
+    this.setState({
+      todoList: []
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -70,6 +78,7 @@ class App extends React.Component {
           value={this.state.todoItem} 
           submitBtnClick={this.submitTodo} 
           clearBtnClick={this.clearTodo} 
+          clearAllBtnClick={this.clearAllItemsHandler}
           inputChange={this.inputChangeHandler}
         />
         <TodoList 
