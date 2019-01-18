@@ -25,10 +25,12 @@ class App extends React.Component {
   // Create the new todo item and push it onto tempTodos
   // Set the state's todoList array equal to tempTodos, reset the todoItem property to an empty string
   submitTodo = e => {
-    e.preventDefault(); 
-    let tempTodos = this.state.todoList; 
-    tempTodos.push({itemName: this.state.todoItem, completed: false, id: Date.now()}); 
-    this.setState({todoList: tempTodos, todoItem: ''});
+    e.preventDefault();
+    if (this.state.todoItem !== '') {
+      let tempTodos = this.state.todoList; 
+      tempTodos.push({itemName: this.state.todoItem, completed: false, id: Date.now()}); 
+      this.setState({todoList: tempTodos, todoItem: ''});
+    } 
   };
 
   // completedStatusHandler is a method that changes the completed property of an object in this.state.todoList
